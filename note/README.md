@@ -5,4 +5,4 @@
 [語言處理](https://github.com/yuanxiii/ai110b/blob/main/note/%E8%AA%9E%E8%A8%80%E8%99%95%E7%90%86.md) <br>
 [梯度下降法](https://github.com/yuanxiii/ai110b/blob/main/note/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95.md) <br>
 [神經網路](https://github.com/yuanxiii/ai110b/blob/main/note/%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF.md) <br>
-
+[pytorch](https://github.com/yuanxiii/ai110b/blob/main/note/pytorch/pytorch.md) <br>
