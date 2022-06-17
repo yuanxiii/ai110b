@@ -1,10 +1,10 @@
 # Face Recognition 人臉識別
 
-> 此報告為參考並學習[face_recognition](https://github.com/ageitgey/face_recognition) 後，做成的報告。
+> 此報告為參考並學習[face_recognition](https://github.com/ageitgey/face_recognition) 後，加上註解並說明做成的報告。
 >
 > [face_recognition](https://github.com/ageitgey/face_recognition) 是一個人臉識別的開源項目，並完整配備開發文檔及應用案例，也兼容樹莓派。
 
-
+人臉辨識又稱臉部辨識（Face Recognition），是以圖像採集以及擷取人臉影像進行分析比對，以作為身份認證的運算技術，相較於指紋、虹膜等生物辨識方式，不需要近距離接觸，也能準確進行辨識，在後疫情時代，也能搭配紅外線攝影機使用，執行體溫管理，不論是在進出大樓，亦或是空港的海關等等都有著很大的發揮空間。
 
 在Face Recognition(人臉辨識)的問題上，通常會再進一步分成兩個種類 :
 - **Face Verification (人臉驗證) :** 
@@ -171,3 +171,30 @@ $ face_recognition --show-distance true ./pictures_of_people_i_know/ ./unknown_p
 /face_recognition_test/unknown_pictures/unknown.jpg,unknown_person,None
 ```
 
+## 案例
+##### 定位拜登的臉
+```bash
+from PIL import Image
+import face_recognition
+
+# 讀取一個圖片到numpy陣列
+image = face_recognition.load_image_file("biden.jpg")
+
+# 用 HOG-based model找到圖片中的所有臉.
+# 這種方法精確度還行，只是沒有CNN 模型準確，而且沒有 GPU 的加速.
+face_locations = face_recognition.face_locations(image)
+
+print("I found {} face(s) in this photograph.".format(len(face_locations)))
+
+for face_location in face_locations:
+
+    # 印出圖片中所有臉的位置
+    top, right, bottom, left = face_location
+    print("A face is located at pixel location Top: {}, Left: {}, Bottom: {}, Right: {}".format(top, left, bottom, right))
+
+    # 我們可以用以下方式存取這張臉:
+    face_image = image[top:bottom, left:right]
+    pil_image = Image.fromarray(face_image)
+    pil_image.show()
+```
+![案例：定位拜登的脸](https://upload-images.jianshu.io/upload_images/13714448-b4ce08c6ba699c5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
